@@ -5,7 +5,7 @@ s = curses.initscr()
 curses.curs_set(0)
 height, width = s.getmaxyx()
 window = curses.newwin(height, width, 0, 0)
-window.keypad(1)
+window.keypad(True)
 window.timeout(100)
 
 snk_x = width/4
@@ -50,7 +50,7 @@ while True:
                 random.randint(1, width-1)            
             ]
             food = new_food if new_food not in snake else None
-        window.addch(food[0], food[1], curses.ASC_PI)
+        window.addch(max(food[0]), max(food[1]), curses.ASC_PI)
     else:
         tail = snake.pop()
         window.addch(int(tail[0]), int(tail[1]), ' ')
